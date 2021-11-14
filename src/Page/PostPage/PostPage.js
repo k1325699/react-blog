@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { getPost } from "../../WebAPI";
-import { Link, useParams, useLocation } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 const PortWrapper = styled.div`
   max-width: 1024px;
   margin: 0 auto;
   margin-top: 15px;
-  border: 1px solid #000;
-  padding: 10px;
+  min-height: calc(100vh - 64px);
 `;
 const PostContextWrapper = styled.div`
   display: flex;
   justify-content: center;
+  padding: 10px;
 `;
 const PortTitle = styled.h1`
   font-size: 32px;
@@ -23,7 +23,10 @@ const PortTime = styled.p`
   padding-bottom: 20px;
 `;
 const PostContent = styled.div`
-  width: 70%;
+  width: 80%;
+  border: 1px solid #bc8cf2;
+  border-radius: 5px;
+  padding: 20px;
 `;
 const PostContentP = styled.p`
   white-space: pre-wrap;
