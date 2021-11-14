@@ -1,4 +1,4 @@
-import { getAuthToken, setAuthToken } from "./utils";
+import { getAuthToken } from "./utils";
 
 const BASE_URL = "https://student-json-api.lidemy.me";
 

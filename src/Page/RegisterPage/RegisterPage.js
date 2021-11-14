@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useContext } from "react";
 import styled from "styled-components";
 import { register, getMe } from "../../WebAPI";
 import { useHistory } from "react-router-dom";
@@ -12,11 +12,14 @@ const RegisterWrapper = styled.div`
   margin-bottom: 30px;
   display: flex;
   justify-content: center;
+  align-items: baseline;
+  min-height: calc(100vh - 64px);
 `;
 const RegisterForm = styled.form`
   width: 50%;
   padding: 30px 15px 15px;
-  border: 1px solid #000;
+  border: 1px solid #bc8cf2;
+  border-radius: 5px;
 `;
 
 const RegisterTitle = styled.h2`
@@ -37,6 +40,8 @@ const RegisterInput = styled.input`
   padding: 5px;
   margin-bottom: 15px;
   outline: none;
+  border-radius: 5px;
+  border: 1px solid #000;
 `;
 const ButtonDiv = styled.div`
   display: flex;
@@ -51,10 +56,15 @@ const RegisterButton = styled.button`
   padding: 15px 25px;
   border-radius: 5px;
   box-shadow: none;
-  border: 1px solid #000;
+  border: 1px solid #aa14f0;
   background: #fff;
   margin-left: 30px;
   margin-bottom: 15px;
+  &:hover {
+    background: #aa14f0;
+    color: #fff;
+    cursor: pointer;
+  }
 `;
 
 const ToLoginPage = styled(Link)`
@@ -68,7 +78,7 @@ const ToLoginPage = styled(Link)`
   font-size: 18px;
 `;
 export default function RegisterPage() {
-  const { user, setUser } = useContext(AuthContext);
+  const { setUser } = useContext(AuthContext);
   const history = useHistory();
   const [username, setUsername] = useState("");
   const [nickname, setNickname] = useState("");

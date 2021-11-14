@@ -10,13 +10,19 @@ import { Link } from "react-router-dom";
 const Root = styled.div`
   max-width: 1024px;
   margin: 0 auto;
+  margin-top: 30px;
+  min-height: calc(100vh - 64px);
 `;
 const PostContainer = styled.div`
-  border-bottom: 1px solid rgba(0, 12, 34, 0.2);
+  border: 1px solid #bc8cf2;
   padding: 16px;
+  border-radius: 5px;
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
+  & + & {
+    margin-top: 15px;
+  }
 `;
 
 const PostTitle = styled(Link)`
@@ -26,6 +32,7 @@ const PostTitle = styled(Link)`
   font-size: 24px;
   color: #333;
   text-decoration: none;
+  line-height: 1.5;
 `;
 
 const PostDate = styled.div`
@@ -71,7 +78,7 @@ const PageChangeWrapper = styled.div`
 `;
 const PageChangeButton = styled.button`
   border: none;
-  color: red;
+  color: #aa14f0;
   background: none;
   font-size: 20px;
   padding: 15px;
@@ -79,7 +86,7 @@ const PageChangeButton = styled.button`
 `;
 const PageChangeP = styled.p``;
 const NowPageSpan = styled.span`
-  color: #b28b00;
+  color: #bc8cf2;
 `;
 
 export default function HomePage() {
@@ -87,12 +94,17 @@ export default function HomePage() {
   const [posts, setPosts] = useState([]);
   const [num, setNum] = useState(1);
   const [pagePosts, setPagePosts] = useState([]);
-  const totalPost = posts.length;
+  const totalPost = posts.filter((post) => post.title.length >= 20).length;
   const pageSize = 10;
   const totalPage = Math.ceil(totalPost / pageSize);
+  posts.map((post) => console.log(post.title.length));
   const nowPagePost = useCallback(
     (num, pageSize) => {
-      setPagePosts(posts.slice((num - 1) * 5, (num - 1) * 5 + pageSize));
+      setPagePosts(
+        posts
+          .filter((post) => post.title.length >= 20)
+          .slice((num - 1) * pageSize, (num - 1) * pageSize + pageSize)
+      );
     },
     [posts]
   );

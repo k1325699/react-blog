@@ -1,12 +1,7 @@
-import React, { useState, useEffect, useLayoutEffect } from "react";
+import React, { useState, useLayoutEffect } from "react";
 import "./App.css";
 import styled from "styled-components";
-import {
-  HashRouter as Router,
-  Switch,
-  Route,
-  useParams,
-} from "react-router-dom";
+import { HashRouter as Router, Switch, Route } from "react-router-dom";
 import { AuthContext } from "../../context";
 import { getAuthToken } from "../../utils";
 
@@ -20,6 +15,7 @@ import { getMe } from "../../WebAPI";
 
 const Root = styled.div`
   padding-top: 64px;
+  background: #eeeeee78;
 `;
 function App() {
   const [user, setUser] = useState(null);
