@@ -2,16 +2,18 @@ import { getAuthToken } from "./utils";
 
 const BASE_URL = "https://student-json-api.lidemy.me";
 
-export const getPosts = async () => {
+export const getDescPosts = async () => {
   const response = await fetch(`${BASE_URL}/posts?_sort=createdAt&_order=desc`);
-  const data = await response.json();
-  return data;
+  return await response.json();
+};
+export const getAscPosts = async () => {
+  const response = await fetch(`${BASE_URL}/posts?_sort=createdAt`);
+  return await response.json();
 };
 
 export const getPost = async (id) => {
   const response = await fetch(`${BASE_URL}/posts?id=${id}`);
-  const data = await response.json();
-  return data;
+  return await response.json();
 };
 
 export const login = async (username, password) => {

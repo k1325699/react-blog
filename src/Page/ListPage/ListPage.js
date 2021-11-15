@@ -8,7 +8,6 @@ const Root = styled.div`
   margin-top: 30px;
   min-height: calc(100vh - 64px);
 `;
-
 const SortWrapper = styled.div`
   display: flex;
   justify-content: flex-end;
@@ -60,6 +59,7 @@ const PostTitle = styled(Link)`
 `;
 
 const PostDate = styled.div`
+  /* width: 20%; */
   color: rgba(0, 0, 0, 0.8);
 `;
 function Post({ post }) {
@@ -112,22 +112,21 @@ const NowPageSpan = styled.span`
   color: #bc8cf2;
 `;
 
-export default function HomePage() {
+export default function ListPage() {
   //usePagination
   const [posts, setPosts] = useState([]);
   //desc,asc
   const [sort, setSort] = useState("desc");
   const [num, setNum] = useState(1);
   const [pagePosts, setPagePosts] = useState([]);
-  const totalPost = posts.filter((post) => post.title.length >= 20).length;
+  const totalPost = posts.length;
   const pageSize = 10;
   const totalPage = Math.ceil(totalPost / pageSize);
+  posts.map((post) => console.log(post.title.length));
   const nowPagePost = useCallback(
     (num, pageSize) => {
       setPagePosts(
-        posts
-          .filter((post) => post.title.length >= 20)
-          .slice((num - 1) * pageSize, (num - 1) * pageSize + pageSize)
+        posts.slice((num - 1) * pageSize, (num - 1) * pageSize + pageSize)
       );
     },
     [posts]
@@ -148,7 +147,6 @@ export default function HomePage() {
   const handleNextPageChage = () => {
     setNum(num + 1);
   };
-
   return (
     <Root>
       <SortWrapper>

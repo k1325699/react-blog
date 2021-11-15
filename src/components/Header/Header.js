@@ -89,8 +89,8 @@ export default function Header() {
       <HeaderContainer>
         <LeftContainer>
           <NavbarList>
-            <Nav to="/" $active={location.pathname === "/"}>
-              首頁
+            <Nav to="/list" $active={location.pathname === "/list"}>
+              列表
             </Nav>
             {user && (
               <Nav to="/new-post" $active={location.pathname === "/new-post"}>
@@ -101,6 +101,9 @@ export default function Header() {
         </LeftContainer>
         <Brand to="/">我的React部落格</Brand>
         <NavbarList>
+          <Nav to="/about" $active={location.pathname === "/about"}>
+            關於
+          </Nav>
           {!user && (
             <Nav to="/login" $active={location.pathname === "/login"}>
               登入
