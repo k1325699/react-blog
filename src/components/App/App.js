@@ -6,9 +6,11 @@ import { AuthContext } from "../../context";
 import { getAuthToken } from "../../utils";
 
 import HomePage from "../../Page/HomePage";
+import ListPage from "../../Page/ListPage";
 import LoginPage from "../../Page/LoginPage";
 import RegisterPage from "../../Page/RegisterPage";
 import PostPage from "../../Page/PostPage";
+import AboutPage from "../../Page/AboutPage";
 import AddPostPage from "../../Page/AddPostPage";
 import Header from "../Header";
 import { getMe } from "../../WebAPI";
@@ -38,6 +40,12 @@ function App() {
           <Switch>
             <Route exact path="/">
               <HomePage />
+            </Route>
+            <Route exact path="/list">
+              <ListPage />
+            </Route>
+            <Route exact path="/about">
+              <AboutPage />
             </Route>
             <Route path="/login">
               <LoginPage />
